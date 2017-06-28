@@ -1,17 +1,19 @@
-@each $palette-color-prefix, $palette-color-variables in get-background-colors-palette($selects-background-colors-support-extra-colors-palette, $selects-background-colors-support-skip-colors-palette) {
+@each $palette-color-prefix, $palette-color-variables in get-background-colors-palette($select-background-colors-support-extra-colors-palette, $select-background-colors-support-skip-colors-palette) {
     .#{$background-colors-class-prefix}-#{$palette-color-prefix} {
         select {
-            border-color: map_get($palette-color-variables, map_get($selects-background-colors-support-parser, border-color));
-            background-color: map_get($palette-color-variables, map_get($selects-background-colors-support-parser, background-color));
-            color: map_get($palette-color-variables, map_get($selects-background-colors-support-parser, color));
+            @include include-select-colors(parse-map($select-background-colors-support-parser, $palette-color-variables));
+            @include include-select-arrow-color-rgb(parse-map($select-arrow-background-colors-support-parser, $palette-color-variables));
 
-            &:focus {
-                border-color: map_get($palette-color-variables, map_get($selects-background-colors-support-parser, focus-border-color));
+            &[disabled] {
+                @include include-select-colors(parse-map($select-disabled-background-colors-support-parser, $palette-color-variables));
+            }
+
+            &[multiple] option:checked {
+                @include include-select-multiple-option-checked-colors(parse-map($select-multiple-background-colors-support-parser, $palette-color-variables));
             }
 
             &[multiple]:focus option:checked {
-                @include include-select-focus-multiple-option-checked-background(map_get($palette-color-variables, map_get($selects-multiple-background-colors-support-parser, focus-option-checked-background)));
-                color: map_get($palette-color-variables, map_get($selects-multiple-background-colors-support-parser, focus-option-checked-color));
+                @include include-select-multiple-option-checked-colors(parse-map($select-multiple-focus-background-colors-support-parser, $palette-color-variables));
             }
         }
     }

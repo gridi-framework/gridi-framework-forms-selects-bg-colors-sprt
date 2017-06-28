@@ -1,14 +1,32 @@
-$selects-background-colors-support-parser: (
+$select-background-colors-support-parser: (
     border-color: 'background-inner-color',
-    background-color: 'background-inner-color',
-    color: 'color',
-    focus-border-color: 'background-inner-color'
+    focus-border-color: 'background-inner-color',
+    background: 'background-inner-color',
+    focus-background: null,
+    color: color,
+    focus-color: null
 ) !default;
 
-$selects-background-colors-support-extra-colors-palette: () !default;
-$selects-background-colors-support-skip-colors-palette: null !default;
+$select-background-colors-support-extra-colors-palette: () !default;
+$select-background-colors-support-skip-colors-palette: null !default;
 
-$selects-multiple-background-colors-support-parser: (
-    focus-option-checked-background: color,
-    focus-option-checked-color: 'background-inner-color',
+$select-disabled-background-colors-support-parser: (
+    border-color: null,
+    background: null,
+    color: null
+) !default;
+
+$select-arrow-background-colors-support-parser: (
+    color-rgb: null,
+    focus-color-rgb: null
+) !default;
+
+$select-multiple-background-colors-support-parser: (
+    background: null,
+    color: null
+) !default;
+
+$select-multiple-focus-background-colors-support-parser: (
+    background: color,
+    color: 'background-inner-color'
 ) !default;
