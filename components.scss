@@ -1,20 +1,5 @@
 @each $palette-color-prefix, $palette-color-variables in get-background-colors-palette($select-background-colors-support-extra-colors-palette, $select-background-colors-support-skip-colors-palette) {
     .#{$background-colors-class-prefix}-#{$palette-color-prefix} {
-        select {
-            @include include-select-colors(parse-map($select-background-colors-support-parser, $palette-color-variables));
-            @include include-select-arrow-color-rgb(parse-map($select-arrow-background-colors-support-parser, $palette-color-variables));
-
-            &[disabled] {
-                @include include-select-colors(parse-map($select-disabled-background-colors-support-parser, $palette-color-variables));
-            }
-
-            &[multiple] option:checked {
-                @include include-select-multiple-option-checked-colors(parse-map($select-multiple-background-colors-support-parser, $palette-color-variables));
-            }
-
-            &[multiple]:focus option:checked {
-                @include include-select-multiple-option-checked-colors(parse-map($select-multiple-focus-background-colors-support-parser, $palette-color-variables));
-            }
-        }
+        @include select-colors(parse-map($select-background-colors-support-parser, $palette-color-variables));
     }
 }
